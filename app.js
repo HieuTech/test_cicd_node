@@ -1,7 +1,11 @@
 import express from "express";
-
 import bodyParser from "body-parser";
 import fs from "fs";
+import dotenv from "dotenv"
+
+dotenv.config();
+
+console.log("host", process.env.PORT);
 
 const app = express();
 const allowedOrigins = ["http://localhost:5174/"];
@@ -124,6 +128,6 @@ app.delete("/students/:id", (req, res) => {
 app.use("/", (req, res) => {});
 //
 
-app.listen(3000, () => {
-  console.log("success");
+app.listen(process.env.PORT, () => {
+  console.log(`server on at ${process.env.HOST}:${process.env.PORT}`);
 });
